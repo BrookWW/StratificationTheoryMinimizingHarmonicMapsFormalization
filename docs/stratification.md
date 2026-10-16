@@ -183,7 +183,7 @@ a j-plane $L_{a,\rho}$ with
 ```math
 \Theta_u(x)\ge\Theta_u(a)-\varepsilon,\quad x\in B_\rho(a)
 \quad\Longrightarrow\quad
-\operatorname{dist}(x,a+L_{a,\rho}) \lt \delta\rho.
+\mathrm{dist}(x,a+L_{a,\rho}) \lt \delta\rho.
 ```
 
 The same epsilon controls scale and density tolerance, and the implication

@@ -93,7 +93,7 @@ strong convergence of the whole original sequence. For $y_k\to y$,
 ```
 
 For every prescribed positive sequence $\rho_k\to0$, one common subsequence
-of $u(a+\rho_k\,\cdot)$ converges strongly on all compact subsets of
+of $u(a+\rho_k \cdot)$ converges strongly on all compact subsets of
 $\mathbb R^n$ to a global local minimizer $\varphi$. The same limit satisfies
 
 ```math
@@ -114,7 +114,7 @@ compact set, one ambient-valued connector has both endpoint traces and
 \begin{aligned}
 \int_{S^{n-1}\times[0,\varepsilon]}|\nabla w|^2
 &\le C_n\varepsilon A+C_n\varepsilon^{-1}D,\\
-\operatorname{dist}(w,N)^2
+\mathrm{dist}(w,N)^2
 &\le C_n\varepsilon^{1-n}\sqrt A\sqrt D
   +C_n\varepsilon^{-n}D\quad\text{a.e.},\\
 A&=\int_{S^{n-1}}(|\nabla_Su|^2+|\nabla_Sv|^2),\qquad

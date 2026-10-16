@@ -6,11 +6,11 @@
   "subject_files": [
     {
       "path": "README.md",
-      "sha256": "13f5590a4724007934beed0a16bcc4333c11cae2333381737af7acdb09e8b743"
+      "sha256": "9e39f39aa8c31b06c980ab22345b2c0ba47302ae1d9d5eb5a5ea1bb3d6c48663"
     },
     {
       "path": "docs/stratification.md",
-      "sha256": "6f110169846a4d65291008cc66c985043b086479420a0962ae2b0b85bd0cee0e"
+      "sha256": "b9c4bc189a7c894658d79eae5c895410b2ea84bf9af5db70248b6a9d5a2938fc"
     },
     {
       "path": "docs/verification.md",

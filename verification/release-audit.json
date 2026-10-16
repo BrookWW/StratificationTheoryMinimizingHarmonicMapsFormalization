@@ -3,11 +3,11 @@
   "review_role": "Independent public-release review",
   "scope": "LOCAL_PUBLIC_RELEASE_CANDIDATE",
   "final_verdict": "PASS",
-  "reviewed_at_utc": "2026-10-16T18:31:09.992472+00:00",
+  "reviewed_at_utc": "2026-10-16T18:35:58.866749+00:00",
   "repository": "BrookWW/StratificationTheoryMinimizingHarmonicMapsFormalization",
   "release_validation": {
     "path": "verification/release-validation.json",
-    "sha256": "2f624834fb5435c0223ed6362d7fd6bb772b50f8d8f36494e4e98a84b0b0a440"
+    "sha256": "685a6f1611159951ba32276b50c90317b5080e9b64584102e2679b5dc30730a1"
   },
   "subject_coverage": {
     "reviewed_files_excluding_this_record": 733,
