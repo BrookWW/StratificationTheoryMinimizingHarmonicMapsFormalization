@@ -1,0 +1,869 @@
+{
+  "schema_version": 1,
+  "encoding": "lean-kernel-expression-json-v1",
+  "declarations": [
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/StrongCompactness.lean",
+      "export": "StratificationTheory.strongCompactness",
+      "abi_sha256": "b08b386f7cbe04ec8de41aaf003737581a5a21989e275154d340ec76a26412a1",
+      "definition_closure": [],
+      "prefix_sha256": "046222039c6675df61b21687ae54b46234e78fcdf9d1d852531a91af99861095",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.StrongCompactness",
+        "export": "StratificationTheory.Providers.StrongCompactness.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/DensityWellDefined.lean",
+      "export": "StratificationTheory.density_wellDefined",
+      "abi_sha256": "a57fec991cd0eb515ff420acf3549c31f6aa8b8035e25016feed8401992ab6b0",
+      "definition_closure": [],
+      "prefix_sha256": "d100412b8082d6803d7d41479fcf1b5cc48b9704ff3c45b0db71ef6ceb085613",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.DensityWellDefined",
+        "export": "StratificationTheory.Providers.DensityWellDefined.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/RegularPoint.lean",
+      "export": "StratificationTheory.IsRegularPoint",
+      "abi_sha256": "fb994b0d798d0a6c04f593a204127d1aa9fd39f1c9c86dacf1a018ffc0b32264",
+      "definition_closure": [],
+      "full_file_sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/SingularSet.lean",
+      "export": "StratificationTheory.singularSet",
+      "abi_sha256": "848d80d4e0483ab3858dfdaa1223dd7fc8859f7ec75c71c17a2a39e272ff6f58",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/RegularPoint.lean",
+          "sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+        }
+      ],
+      "full_file_sha256": "c6c004a5d14cb6b4a77239a27b659c9dfe0083b14e2d3ed1d69fa39209a3805b"
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/Density.lean",
+      "export": "StratificationTheory.density",
+      "abi_sha256": "1630bd928f171a5e9da78e05ed703476a13bd86fd9502dda5d9c6a7ebc0354f8",
+      "definition_closure": [],
+      "full_file_sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/DensityCharacterization.lean",
+      "export": "StratificationTheory.density_characterization",
+      "abi_sha256": "a54e3b1b0aa3a858deeea5f415c84dfcf141890fb8a0ab080a53cd13e552c21c",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        }
+      ],
+      "prefix_sha256": "a2adcf0744e31d8d7efd0151c7bf92149a49de75617ba868b19964ef29befa86",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.DensityCharacterization",
+        "export": "StratificationTheory.Providers.DensityCharacterization.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/RegularDensity.lean",
+      "export": "StratificationTheory.regularPoint_density_characterization",
+      "abi_sha256": "edef7f537c8acab4d6e408d0791b813e401859f052bcd80bd17a86272878ecc8",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/RegularPoint.lean",
+          "sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SingularSet.lean",
+          "sha256": "c6c004a5d14cb6b4a77239a27b659c9dfe0083b14e2d3ed1d69fa39209a3805b"
+        }
+      ],
+      "prefix_sha256": "77bc66443228fd88b2547f8e2c6be90bd96d6c2add3867701dad147bd440e4f9",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.RegularDensity",
+        "export": "StratificationTheory.Providers.RegularDensity.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SingularSetNull.lean",
+      "export": "StratificationTheory.singularSet_hausdorffMeasure_zero",
+      "abi_sha256": "7b81a4c3786add2ed0455c63e4e77f81dfa85c4f79641b0087702f8415bf74a0",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/RegularPoint.lean",
+          "sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SingularSet.lean",
+          "sha256": "c6c004a5d14cb6b4a77239a27b659c9dfe0083b14e2d3ed1d69fa39209a3805b"
+        }
+      ],
+      "prefix_sha256": "bf7d00d30cdffe41e3dadf7405c2536883a37a3b92a2ab16670dd2a3a2124b61",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SingularSetNull",
+        "export": "StratificationTheory.Providers.SingularSetNull.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SpineWellDefined.lean",
+      "export": "StratificationTheory.spine_wellDefined",
+      "abi_sha256": "654faac1969e0ee1ee9794a81237b73477bfc085d505b390db2536134b6270b5",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        }
+      ],
+      "prefix_sha256": "0edc881ccf111d37fa75cd7bb526725e7d9f134b7806137d37cbcb940ed5863c",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SpineWellDefined",
+        "export": "StratificationTheory.Providers.SpineWellDefined.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/FlatCover.lean",
+      "export": "StratificationTheory.flatApproximation_hausdorffMeasure_zero",
+      "abi_sha256": "0b58bbd4a3d942a214e570f6f9d728305c93ee1008fe8bcc8f7957a888926ec7",
+      "definition_closure": [],
+      "prefix_sha256": "2881474265e9ba97ead071d4c87a998c08fd8253450af9119efb2662f69fdbde",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.FlatCover",
+        "export": "StratificationTheory.Providers.FlatCover.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/Spine.lean",
+      "export": "StratificationTheory.spine",
+      "abi_sha256": "3a33b9cd5282c53686beb846c775b171226e224cd081e47756f7999138fb8dce",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        }
+      ],
+      "full_file_sha256": "6a768e15e31ad932b0b1d2ad931e9fd06c6b7db3974fb510a11db16344bcc12b"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SpineCharacterization.lean",
+      "export": "StratificationTheory.spine_characterization",
+      "abi_sha256": "91861b48484793a4dacd8702cf45e99762f327f25ce1529fa12a2d30ada69f39",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Spine.lean",
+          "sha256": "6a768e15e31ad932b0b1d2ad931e9fd06c6b7db3974fb510a11db16344bcc12b"
+        },
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        }
+      ],
+      "prefix_sha256": "6fb2e505ffe937b21d46c3a22374ec20ee18e25c426ebc7d4cc4911cd6b780f8",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SpineCharacterization",
+        "export": "StratificationTheory.Providers.SpineCharacterization.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+      "export": "StratificationTheory.MemSphereW12",
+      "abi_sha256": "1c770c83efd1edd6793381911fecd4ffde81323c69f316844174c992733c0460",
+      "definition_closure": [],
+      "full_file_sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+      "export": "StratificationTheory.TakesSphereValuesIn",
+      "abi_sha256": "bfe3fd5fc97a2d67394c435f0557ef219e35c84d18986e2b74e2e96e75768fce",
+      "definition_closure": [],
+      "full_file_sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SpineCodimension.lean",
+      "export": "StratificationTheory.spine_singular_and_finrank_le",
+      "abi_sha256": "78dfbd2f54365ce5c0b0149c683aed7d99d157c5b1f51e3809e1cc8304eea2b9",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Spine.lean",
+          "sha256": "6a768e15e31ad932b0b1d2ad931e9fd06c6b7db3974fb510a11db16344bcc12b"
+        },
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/RegularPoint.lean",
+          "sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SingularSet.lean",
+          "sha256": "c6c004a5d14cb6b4a77239a27b659c9dfe0083b14e2d3ed1d69fa39209a3805b"
+        }
+      ],
+      "prefix_sha256": "1e791853ab1b1f7df76ad2acc4e2b28485fc31140f29e8d02b8506dd0ff134ab",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SpineCodimension",
+        "export": "StratificationTheory.Providers.SpineCodimension.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SphereSlices.lean",
+      "export": "StratificationTheory.ae_sphereSobolev_and_targetValues",
+      "abi_sha256": "86bd79c690b9a69ad73d9463d4fe6f67bc404d6ad83347debb1e08c947c0ceb1",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+          "sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+        }
+      ],
+      "prefix_sha256": "30cec3a8594e6aa33f8784cf0f172e8ffc191e75a10e81d76f0c3f2a32b00739",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SphereSlices",
+        "export": "StratificationTheory.Providers.SphereSlices.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SphereGradientWellDefined.lean",
+      "export": "StratificationTheory.sphere_gradient_existsUnique",
+      "abi_sha256": "716ed50e567b7841296157f1a09a43165da23b532d63a392803046491999b889",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        }
+      ],
+      "prefix_sha256": "ab7ac1d9fe01ce30fcb7623aa7a99107d563ae564209443085690fc1be5a124b",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SphereGradientWellDefined",
+        "export": "StratificationTheory.Providers.SphereGradientWellDefined.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/SphereGradient.lean",
+      "export": "StratificationTheory.sphereGradient",
+      "abi_sha256": "2b331b410459845068746af266f8ee776e9dafde8f55804e70775c30f54040ac",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        }
+      ],
+      "full_file_sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SphereGradientCharacterization.lean",
+      "export": "StratificationTheory.sphereGradient_characterization",
+      "abi_sha256": "9514f2f720f9b40b57fa9177dfc1c9e99bfdeef7e273d627e7b4af6b4936227d",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        }
+      ],
+      "prefix_sha256": "0caebfb6f87e9e183a8523200799aad8b1b01cec4414b551a8deb3a39fbc5958",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SphereGradientCharacterization",
+        "export": "StratificationTheory.Providers.SphereGradientCharacterization.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+      "export": "StratificationTheory.unitCylinder",
+      "abi_sha256": "d08e224a118fed6de149141e0113121e39c38db3134d0c17c7b2fdde570566a1",
+      "definition_closure": [],
+      "full_file_sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+      "export": "StratificationTheory.MemCylinderW12",
+      "abi_sha256": "7709007235dfa1d0737e2bf41876f13d4ff202979f7779a1cd04b8dbf2469421",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        }
+      ],
+      "full_file_sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SphereSliceEnergy.lean",
+      "export": "StratificationTheory.ae_sphereSobolev_and_gradientEnergy",
+      "abi_sha256": "d6df806c23b8787d5879062cf70ad20f9c6a5c52d81e78944f3c04d55ab5e04f",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        }
+      ],
+      "prefix_sha256": "e1dc2e0962c01902ad4748d686357fdf127344b0a4c90fc3a2f5f8e41b3e26de",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SphereSliceEnergy",
+        "export": "StratificationTheory.Providers.SphereSliceEnergy.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/CylinderTraceWellDefined.lean",
+      "export": "StratificationTheory.cylinder_trace_existsUnique",
+      "abi_sha256": "1a1add646f1db4d6fce7702b49935b8b5bceeac3306ad6a26f6b362b069e3456",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        }
+      ],
+      "prefix_sha256": "5e140997574f24152abd39504d85ecc42e02a3c4f150aa10a4af38aa40f81101",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.CylinderTraceWellDefined",
+        "export": "StratificationTheory.Providers.CylinderTraceWellDefined.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+      "export": "StratificationTheory.cylinderTrace",
+      "abi_sha256": "53ec13f0623c85ff826bff5ebdc00d295ba82b647c4d076ac49f68f65261a3d8",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        }
+      ],
+      "full_file_sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/CylinderTraceCharacterization.lean",
+      "export": "StratificationTheory.cylinderTrace_characterization",
+      "abi_sha256": "685eab718b5d6a2a4fced54176cfd3b15187c1b11943568c4bbc6e1554b900d7",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        }
+      ],
+      "prefix_sha256": "ee3545e067cdd0297b582218819ca719afe6a608022cd29773d9f8fd111c83ab",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.CylinderTraceCharacterization",
+        "export": "StratificationTheory.Providers.CylinderTraceCharacterization.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/AmbientRadialTraceWellDefined.lean",
+      "export": "StratificationTheory.ambient_radial_trace_existsUnique",
+      "abi_sha256": "ade1f51412c53f16a3a3b02e5362d67363d7f5cc64029494f69d8fe6d752a032",
+      "definition_closure": [],
+      "prefix_sha256": "508d5f5f88576f8cb4241cc5848061a4c249f9b97d5025df0a9c1455e7ddbe46",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.AmbientRadialTraceWellDefined",
+        "export": "StratificationTheory.Providers.AmbientRadialTraceWellDefined.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/SphereRadialBallExtension.lean",
+      "export": "StratificationTheory.exists_radial_ball_sobolev_extension",
+      "abi_sha256": "a23c26b81b0a9b9153f1af3c123ed46dfd2299c295ecd97f7f05b6a84ef81d5a",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        }
+      ],
+      "prefix_sha256": "4936b5190f29b8e7a6d374ec0bd6066e5a0e5a0c7d0c85c6b8dfe43083d98dca",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.SphereRadialBallExtension",
+        "export": "StratificationTheory.Providers.SphereRadialBallExtension.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/CylinderAnnularTransfer.lean",
+      "export": "StratificationTheory.cylinder_to_annulus_exists",
+      "abi_sha256": "1adb1ed348f44ea02d2d210ab6fb7e9c4b95f33e243dec7ef51b364ea37e51e1",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        }
+      ],
+      "prefix_sha256": "d6f95b4ec22609889e7b860e6a0b9bfff7ea8ed16e99553ae91389c09db4b4b1",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.CylinderAnnularTransfer",
+        "export": "StratificationTheory.Providers.CylinderAnnularTransfer.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/RadialTraceGluing.lean",
+      "export": "StratificationTheory.memW12_radial_trace_gluing",
+      "abi_sha256": "ca02e18b71126027117a7b7d53e758ceb36d87b83a910c07ff03ae78035b1629",
+      "definition_closure": [],
+      "prefix_sha256": "74163804023efd6fd098dea12560b34b146c7db0f3a74e3aa42627c50e7bec0f",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.RadialTraceGluing",
+        "export": "StratificationTheory.Providers.RadialTraceGluing.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/CoordinateTraceJoint.lean",
+      "export": "StratificationTheory.coordinate_flat_trace_and_cut_compatibility",
+      "abi_sha256": "20beb19e9a2caed7f6710d20929c80844599c507d5b0f065f9df2f023b740b20",
+      "definition_closure": [],
+      "prefix_sha256": "359c0403340b878abcf40bd18439b3025cc18f7fefe401ff15dc362226cced7e",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.CoordinateTraceJoint",
+        "export": "StratificationTheory.Providers.CoordinateTraceJoint.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/FullGridSobolevPairV2.lean",
+      "export": "StratificationTheory.full_grid_sobolev_pair_joint",
+      "abi_sha256": "9e1878a607ab299394edf3a52892348f1ae68383969a783766e8cdc11bea1566",
+      "definition_closure": [],
+      "prefix_sha256": "3fbaf8ff2431bb64e12e592b7009402480ecc6812365430d2bb82c3f5a02b2a8",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.FullGridSobolevPairV2",
+        "export": "StratificationTheory.Providers.FullGridSobolevPairV2.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/ClosedTargetGridJoint.lean",
+      "export": "StratificationTheory.full_grid_closed_target_sobolev_pair_joint",
+      "abi_sha256": "66a84c2e8a505e2a6c1662a32a78bf4834c96b7a88b3557efd5028fb27415dda",
+      "definition_closure": [],
+      "prefix_sha256": "172fd1c605d8d319348d1b9984773743bbffe17d3eb57157fbb3a933b3abe55c",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.ClosedTargetGridJoint",
+        "export": "StratificationTheory.Providers.ClosedTargetGridJoint.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/AffineAnnularPostcomposition.lean",
+      "export": "StratificationTheory.exists_affine_annular_postcomposition",
+      "abi_sha256": "b218eb28e72156ef76d83290d68e5159d876d855ae898dfce887cb9b72d1d80d",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        }
+      ],
+      "prefix_sha256": "f7579d3a45ec171a2902a3efa40213de862dfca6d4768c2cf70bbfa8c14ef80c",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.AffineAnnularPostcomposition",
+        "export": "StratificationTheory.Providers.AffineAnnularPostcomposition.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/CubicalFaceConeExtensionV2.lean",
+      "export": "StratificationTheory.cubical_face_cone_extension_joint",
+      "abi_sha256": "0c0846c21a500fb2dd828cecd1b17d4556d3eaa3af7f97082a92386bd5062627",
+      "definition_closure": [],
+      "prefix_sha256": "d33702f0dc9135c225266e4c7c71ddc1e3ed3ced056c0df464ca7eea94bad8f9",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.CubicalFaceConeExtensionV2",
+        "export": "StratificationTheory.Providers.CubicalFaceConeExtensionV2.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/LuckhausJoint.lean",
+      "export": "StratificationTheory.luckhaus_joint",
+      "abi_sha256": "892151a602a97bbf0240ae44e6aabf45b51acd1098afe91d95e70f6d7d5f3532",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        }
+      ],
+      "prefix_sha256": "0bef88ec191e3c911bde308685ce0d2434bbc49092e36f25dbd62fda67a2c8bb",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.LuckhausJoint",
+        "export": "StratificationTheory.Providers.LuckhausJoint.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/TangentMaps/TangentRelation.lean",
+      "export": "StratificationTheory.IsTangentAt",
+      "abi_sha256": "44e312b1ef71202d547cda91605cfc202f4f71c81cc69f9c4e1769b4b175d68f",
+      "definition_closure": [],
+      "full_file_sha256": "1c94384a39a8f43a8255b67fc69cfa1ae770a9b0d5c8d70e430b819e87838425"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/TangentMaps/PrescribedTangentExtraction.lean",
+      "export": "StratificationTheory.exists_tangent_along_prescribed_scales",
+      "abi_sha256": "3e86a2e1067e8baff12738817cc54567d01cb56c78cb347fcab7a2ff1d35edad",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+          "sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        },
+        {
+          "path": "StratificationTheory/TangentMaps/TangentRelation.lean",
+          "sha256": "1c94384a39a8f43a8255b67fc69cfa1ae770a9b0d5c8d70e430b819e87838425"
+        }
+      ],
+      "prefix_sha256": "853ec52c6e75d7be2b45d7f2f6125f4b72630e48748f74fa87e5a89004f64342",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.PrescribedTangentExtraction",
+        "export": "StratificationTheory.Providers.PrescribedTangentExtraction.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/TangentMaps/TangentQualification.lean",
+      "export": "StratificationTheory.IsTangentAt.qualification",
+      "abi_sha256": "f373907874f2b596e7d752f2a73e089dd0d2b3455d535e2c6450adc92bc8a51a",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+          "sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        },
+        {
+          "path": "StratificationTheory/TangentMaps/TangentRelation.lean",
+          "sha256": "1c94384a39a8f43a8255b67fc69cfa1ae770a9b0d5c8d70e430b819e87838425"
+        }
+      ],
+      "prefix_sha256": "d74b757f8f404b66f0dec2969a04a59b1eaa12240b967a121cb3f5baf053fe5c",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.TangentQualification",
+        "export": "StratificationTheory.Providers.TangentQualification.result"
+      }
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Foundation/DensityJointUpperSemicontinuity.lean",
+      "export": "StratificationTheory.exists_prescribed_weak_limit_density_joint_upper_bound",
+      "abi_sha256": "675267af93717b684def8359e93b98fddcdc469e030ca0c772f44f986d9b230d",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+          "sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        }
+      ],
+      "prefix_sha256": "c4d86175a3a287ebdf13662e64db09b9f778617ab99b1d8860e87055e9f5beb3",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.DensityJointUpperSemicontinuity",
+        "export": "StratificationTheory.Providers.DensityJointUpperSemicontinuity.result"
+      }
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/SingularStratum.lean",
+      "export": "StratificationTheory.singularStratum",
+      "abi_sha256": "d450014c695c23e6553230acb716f97303f9c39e38ab5c0a08b303e4ec3dff7c",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/RegularPoint.lean",
+          "sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SingularSet.lean",
+          "sha256": "c6c004a5d14cb6b4a77239a27b659c9dfe0083b14e2d3ed1d69fa39209a3805b"
+        },
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/Spine.lean",
+          "sha256": "6a768e15e31ad932b0b1d2ad931e9fd06c6b7db3974fb510a11db16344bcc12b"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+          "sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        },
+        {
+          "path": "StratificationTheory/TangentMaps/TangentRelation.lean",
+          "sha256": "1c94384a39a8f43a8255b67fc69cfa1ae770a9b0d5c8d70e430b819e87838425"
+        }
+      ],
+      "full_file_sha256": "382b6c3486dadb3d3d3a19ed499bc8774793bd20b0c189758ac359cd169f51e0"
+    },
+    {
+      "kind": "definition",
+      "path": "StratificationTheory/Frozen/DeltaApproximation.lean",
+      "export": "StratificationTheory.HasDeltaApproximation",
+      "abi_sha256": "4d3f29209c5f5de2a3f7777b38fea081e27f07c758a4f9a8723cfe5cc422cd4f",
+      "definition_closure": [],
+      "full_file_sha256": "475eb3c367668ae8e7694aee4160fe6ca34c0497d5f14491b3b2719e1c09deb2"
+    },
+    {
+      "kind": "theorem",
+      "path": "StratificationTheory/Frozen/Stratification.lean",
+      "export": "StratificationTheory.stratification",
+      "abi_sha256": "00d7bb27210d9e7eb1c7b21b17bceec9a2430945a36a9d48929d55527365576f",
+      "definition_closure": [
+        {
+          "path": "StratificationTheory/Frozen/RegularPoint.lean",
+          "sha256": "ff001d8b80b61d491b8e26a0df180e6665936a4db25ff358589ec90a1fc77d66"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SingularSet.lean",
+          "sha256": "c6c004a5d14cb6b4a77239a27b659c9dfe0083b14e2d3ed1d69fa39209a3805b"
+        },
+        {
+          "path": "StratificationTheory/Frozen/Density.lean",
+          "sha256": "cea357f44a54cddc38c5956f227105eebfcb312ab13eba143e05488e05f9ee96"
+        },
+        {
+          "path": "StratificationTheory/Frozen/Spine.lean",
+          "sha256": "6a768e15e31ad932b0b1d2ad931e9fd06c6b7db3974fb510a11db16344bcc12b"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereSobolev.lean",
+          "sha256": "4d1a15b143280e386557a0127297fc3c8d8d954b1c6b9ec71d8391041028f28d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereTargetValues.lean",
+          "sha256": "97ff15459353153ec236cf0b3b960b3698fdf30c132e15ee936569f1a02f605e"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SphereGradient.lean",
+          "sha256": "9cf30f44effa734d13ec1d8ddf43a45718055d68979a76353646f5547b341b79"
+        },
+        {
+          "path": "StratificationTheory/Frozen/UnitCylinder.lean",
+          "sha256": "c3ef4ec6fa973314ecc2e9c1b31afd5db5f24cc83f75b2bb0110571b6bde9182"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderSobolev.lean",
+          "sha256": "a9920940e84f8044b7b80098c71d9e69ca3b4b975b3644afd00beff3d9606e8d"
+        },
+        {
+          "path": "StratificationTheory/Frozen/CylinderTrace.lean",
+          "sha256": "63747ef9a601738bf4e117d5e9de01d4a3088033dfc72b03626e8d2b98e27659"
+        },
+        {
+          "path": "StratificationTheory/TangentMaps/TangentRelation.lean",
+          "sha256": "1c94384a39a8f43a8255b67fc69cfa1ae770a9b0d5c8d70e430b819e87838425"
+        },
+        {
+          "path": "StratificationTheory/Frozen/SingularStratum.lean",
+          "sha256": "382b6c3486dadb3d3d3a19ed499bc8774793bd20b0c189758ac359cd169f51e0"
+        }
+      ],
+      "prefix_sha256": "c3f6cd76e2c64056ee7eb99141cd1d7665085a30712f4e1b9f46b39221edc079",
+      "suffix_sha256": "cdb6d813114d574e98535b0d3d735363841c8c50acd8279b23a01518bb809fdf",
+      "implementation": {
+        "module": "StratificationTheory.Providers.Stratification",
+        "export": "StratificationTheory.Providers.Stratification.result"
+      }
+    }
+  ]
+}

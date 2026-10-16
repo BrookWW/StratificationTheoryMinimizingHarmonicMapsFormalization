@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "manuscripts": [
+    {
+      "path": "sources/minimizer_stratification.tex",
+      "sha256": "6dc1cc8773873a84d88390cd3ca04860e6785fd47809997083a885e79916356d"
+    }
+  ],
+  "build_configuration": [
+    {
+      "path": "lean-toolchain",
+      "sha256": "2bdc48adfa58d0017e538a0ad117c5d73d35deec879978f909406a80c8037273"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "9093d86d6f06a8da2493ed487e0ca02727b528944afd152c1ec6dc19b4ab082e"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "550c4bde8ba6d475917dc299a010514691c36fd3d2aa07315fd63d079cabfd2c"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "9f752effa2a74883a7f5cc3857a175fe213f5c0464ad41229d4d70178508d29a"
+    },
+    {
+      "path": ".github/workflows/build.yml",
+      "sha256": "5879133dd2b861c01b2bd58a337e0c52be7b8f97a917fa4b16200fbaf260fee4"
+    },
+    {
+      "path": ".github/workflows/kernel.yml",
+      "sha256": "efce2ab4ce64a5ed0d8efd653003e24e213fdecfd7c3408ad04d3f57352adb50"
+    }
+  ],
+  "verification_tools": [
+    {
+      "path": "scripts/check_sources.py",
+      "sha256": "5e7c4aa1fc68ae902191e9fb780afdedd4947ad82a2b45fda1f6789a0ba986f1"
+    },
+    {
+      "path": "scripts/check_statements.py",
+      "sha256": "1001f5abec5b7c879baed061c7acf83c93835c0ff74c55cd356628e116001921"
+    },
+    {
+      "path": "scripts/check_axioms.py",
+      "sha256": "08406b2871b8289fd56a5f52879cf4a2e7083cdaad48c73bdc7dc589d1463f09"
+    },
+    {
+      "path": "scripts/lean_source.py",
+      "sha256": "cd1472a43146d7610a3dbd15a99ac3a12b561b4e95c3286929c0986e6601a253"
+    },
+    {
+      "path": "verification/modules.json",
+      "sha256": "0110a9a2e2d8679c18fc32392860e08a246bc2f22e80d7a802b69582bfe176b8"
+    },
+    {
+      "path": "verification/theorem-types.json",
+      "sha256": "10191c7ea4a52529becaefa6c0867932712a0b9d9e246274df3208ab1fb19d8c"
+    },
+    {
+      "path": "verification/public-api.json",
+      "sha256": "5d52c7610c9232fd5d834b63e49e31b934b264dee6829fa5704e7236bf51f74e"
+    }
+  ],
+  "direct_dependencies": [
+    {
+      "name": "mathlib",
+      "url": "https://github.com/leanprover-community/mathlib4",
+      "rev": "905b95818eb32af7874a58b427f50c1711a5e96c"
+    },
+    {
+      "name": "harmonicMaps",
+      "url": "https://github.com/BrookWW/SchoenUhlenbeckSmallEnergyRegularityFormalization.git",
+      "rev": "f3a3097025ab9ddd956859600211d1d4edf0654e"
+    }
+  ]
+}

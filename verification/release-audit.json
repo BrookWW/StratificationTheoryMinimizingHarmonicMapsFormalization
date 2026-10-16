@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "review_role": "Independent public-release review",
+  "scope": "LOCAL_PUBLIC_RELEASE_CANDIDATE",
+  "final_verdict": "PASS",
+  "reviewed_at_utc": "2026-10-16T18:31:09.992472+00:00",
+  "repository": "BrookWW/StratificationTheoryMinimizingHarmonicMapsFormalization",
+  "release_validation": {
+    "path": "verification/release-validation.json",
+    "sha256": "2f624834fb5435c0223ed6362d7fd6bb772b50f8d8f36494e4e98a84b0b0a440"
+  },
+  "subject_coverage": {
+    "reviewed_files_excluding_this_record": 733,
+    "mathematical_source_files": 712,
+    "support_files_bound_by_validation": 20,
+    "all_subject_paths_covered_by_module_or_validation_hashes": true,
+    "this_record_excluded_from_its_own_hash_coverage": true
+  },
+  "source_and_statement_fidelity": {
+    "all712_Lean_files_preserve_checked_source_bytes": true,
+    "complete42_interface_fingerprints_preserved": true,
+    "definition_bodies_and_meaning_carrying_closures_preserved": true,
+    "all493_public_names_preserved": true,
+    "manuscript_bytes_preserved": true,
+    "review_is_release_fidelity_not_a_new_mathematical_proof_audit": true
+  },
+  "dependency_isolation": {
+    "toolchain": "leanprover/lean4:v4.32.2",
+    "direct_git_revisions": {
+      "harmonicMaps": "f3a3097025ab9ddd956859600211d1d4edf0654e",
+      "mathlib": "905b95818eb32af7874a58b427f50c1711a5e96c"
+    },
+    "only_declared_pinned_dependencies_resolve_imports": true,
+    "no_adjacent_checkout_or_source_symlinks_required": true,
+    "fresh_project_and_harmonicMaps_builds": true,
+    "official_Mathlib_dependency_cache_used": true,
+    "no_project_build_artifacts_copied": true
+  },
+  "actual_local_validation": {
+    "fresh_lake_build_exit_code": 0,
+    "fresh_lake_jobs": 4752,
+    "exact_project_modules_built": 712,
+    "source_check_exit_code": 0,
+    "public_and_statement_check_exit_code": 0,
+    "complete_interfaces_checked": 42,
+    "provider_results_checked": 29,
+    "generated_proof_constant_provider_pairs_kernel_checked": 3,
+    "actual_public_names_checked_Main_only": 493,
+    "axiom_check_exit_code": 0,
+    "ordinary_and_sealed_axiom_closures_checked": 1349,
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "kernel_replay_exit_code": 0,
+    "exact_project_modules_replayed": 712,
+    "documentation_Lean_examples_compiled": 5,
+    "all_documentation_example_exit_codes_zero": true
+  },
+  "release_content_review": {
+    "no_private_artifacts_or_actual_private_paths_published": true,
+    "source_guard_patterns_are_not_private_path_disclosures": true,
+    "no_credentials_found": true,
+    "relative_document_links_checked": true,
+    "GitHub_math_inequality_syntax_checked": true,
+    "mathematical_claims_match_the_approved_interfaces": true,
+    "Scott_lexer_adaptation_attribution_and_CC_BY_4_0_license_retained": true,
+    "dependency_licenses_and_mathematical_citations_retained": true,
+    "no_repository_wide_license_assigned_to_new_material": true
+  },
+  "workflows": {
+    "build": ".github/workflows/build.yml",
+    "kernel_replay": ".github/workflows/kernel.yml",
+    "pinned_actions_and_separate_caches_reviewed": true,
+    "compiled_replay_is_Lean_kernel_replay_not_an_external_proof_assistant": true
+  },
+  "nonblocking_notes": [
+    "Existing whitespace-format warnings were retained rather than changing checked mathematical source bytes; they are not represented as a passing whitespace check."
+  ],
+  "remote_ci": {
+    "success_claimed_by_this_local_review": false,
+    "published_commit_workflow_results_require_separate_verification": true
+  },
+  "unresolved_release_findings": []
+}

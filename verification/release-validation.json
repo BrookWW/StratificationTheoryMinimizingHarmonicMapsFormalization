@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "scope": "LOCAL_PUBLIC_RELEASE_CANDIDATE",
+  "lean_toolchain": "leanprover/lean4:v4.32.2",
+  "subject_files": [
+    {
+      "path": "README.md",
+      "sha256": "13f5590a4724007934beed0a16bcc4333c11cae2333381737af7acdb09e8b743"
+    },
+    {
+      "path": "docs/stratification.md",
+      "sha256": "6f110169846a4d65291008cc66c985043b086479420a0962ae2b0b85bd0cee0e"
+    },
+    {
+      "path": "docs/verification.md",
+      "sha256": "57523d649f96d0f6c41a1ed3fc213132f447b8c1cba6ebe490c7aa46851e4601"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "2bdc48adfa58d0017e538a0ad117c5d73d35deec879978f909406a80c8037273"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "9093d86d6f06a8da2493ed487e0ca02727b528944afd152c1ec6dc19b4ab082e"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "550c4bde8ba6d475917dc299a010514691c36fd3d2aa07315fd63d079cabfd2c"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "9f752effa2a74883a7f5cc3857a175fe213f5c0464ad41229d4d70178508d29a"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "0d9d46887875ddfccf3b5e3cef50d76d7b661594fb339974552b18fdf4307fed"
+    },
+    {
+      "path": ".github/workflows/build.yml",
+      "sha256": "5879133dd2b861c01b2bd58a337e0c52be7b8f97a917fa4b16200fbaf260fee4"
+    },
+    {
+      "path": ".github/workflows/kernel.yml",
+      "sha256": "efce2ab4ce64a5ed0d8efd653003e24e213fdecfd7c3408ad04d3f57352adb50"
+    },
+    {
+      "path": "scripts/check_sources.py",
+      "sha256": "5e7c4aa1fc68ae902191e9fb780afdedd4947ad82a2b45fda1f6789a0ba986f1"
+    },
+    {
+      "path": "scripts/check_statements.py",
+      "sha256": "1001f5abec5b7c879baed061c7acf83c93835c0ff74c55cd356628e116001921"
+    },
+    {
+      "path": "scripts/check_axioms.py",
+      "sha256": "08406b2871b8289fd56a5f52879cf4a2e7083cdaad48c73bdc7dc589d1463f09"
+    },
+    {
+      "path": "scripts/lean_source.py",
+      "sha256": "cd1472a43146d7610a3dbd15a99ac3a12b561b4e95c3286929c0986e6601a253"
+    },
+    {
+      "path": "verification/modules.json",
+      "sha256": "0110a9a2e2d8679c18fc32392860e08a246bc2f22e80d7a802b69582bfe176b8"
+    },
+    {
+      "path": "verification/theorem-types.json",
+      "sha256": "10191c7ea4a52529becaefa6c0867932712a0b9d9e246274df3208ab1fb19d8c"
+    },
+    {
+      "path": "verification/public-api.json",
+      "sha256": "5d52c7610c9232fd5d834b63e49e31b934b264dee6829fa5704e7236bf51f74e"
+    },
+    {
+      "path": "verification/sources.json",
+      "sha256": "41874dc262dc50208fbd6b9ef0f1954b6ec9197a07d3d6d67fea5baede4ff8ab"
+    },
+    {
+      "path": "sources/minimizer_stratification.tex",
+      "sha256": "6dc1cc8773873a84d88390cd3ca04860e6785fd47809997083a885e79916356d"
+    },
+    {
+      "path": "LICENSES/Armstrong-CC-BY-4.0.txt",
+      "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+    }
+  ],
+  "fresh_build": {
+    "command": [
+      "lake",
+      "build"
+    ],
+    "environment": {
+      "LEAN_NUM_THREADS": "2"
+    },
+    "exit_code": 0,
+    "compiled_project_modules": 712,
+    "lake_jobs": 4752,
+    "output_sha256": "84fd267c278692f9128743b1c8748c45300cbb59eae19d12040c2041b22f883b",
+    "setup": "Pinned public Git dependencies; official Mathlib dependency cache; empty project and harmonicMaps build directories before build."
+  },
+  "checks": [
+    {
+      "name": "sources",
+      "command": [
+        "python3",
+        "scripts/check_sources.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.585,
+      "output_sha256": "349bc2a05b01f33bb5091730d7e3338fc56894cfe6bfacafb485cecde3316c11"
+    },
+    {
+      "name": "statements",
+      "command": [
+        "python3",
+        "scripts/check_statements.py"
+      ],
+      "exit_code": 0,
+      "seconds": 24.085,
+      "output_sha256": "b4e4e874033c53de9d60698b3e61baaa31c102def5645d43fc27773a4742d8dd"
+    },
+    {
+      "name": "axioms",
+      "command": [
+        "python3",
+        "scripts/check_axioms.py"
+      ],
+      "exit_code": 0,
+      "seconds": 4.477,
+      "output_sha256": "ff847460d125f11d789cfe4cb3920685098d8fbbbaf37e2e7dfdc5673de16a7c"
+    },
+    {
+      "name": "kernel",
+      "command": [
+        "lake",
+        "--no-build",
+        "env",
+        "leanchecker",
+        "StratificationTheory",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 471.028,
+      "output_sha256": "3bd38c630fc63fdd4a2b2bcbe6aa1102b84767104bcf34d99a383cbaab86c9fd"
+    }
+  ],
+  "coverage": {
+    "project_source_modules": 712,
+    "complete_interfaces": 42,
+    "theorem_interfaces": 29,
+    "definition_interfaces": 13,
+    "provider_results": 29,
+    "provider_local_proof_name_pairs_checked_for_kernel_equality": 3,
+    "public_names": 493,
+    "public_project_modules": 226,
+    "axiom_closures": 1349,
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "kernel_replayed_project_modules": 712
+  },
+  "documentation_examples": [
+    {
+      "document": "README.md",
+      "lean_block": 1,
+      "code_sha256": "a9f5df907c120d1d9cf2f553df4d55b2cdfef01a8e2b8ee4b3b7b74fdb2e1f02",
+      "method": "lake --no-build env lean -DautoImplicit=false <extracted Lean block>",
+      "exit_code": 0,
+      "seconds": 2.001,
+      "output_sha256": "ba618789a44730e40054f6add38e219c75e9184789c62a7b82f3d794c47086da"
+    },
+    {
+      "document": "README.md",
+      "lean_block": 2,
+      "code_sha256": "ca67a035e9b71445fa63dac313147e1da371d12e49fd99ce72aef007a44db87a",
+      "method": "lake --no-build env lean -DautoImplicit=false <extracted Lean block>",
+      "exit_code": 0,
+      "seconds": 1.538,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "document": "docs/stratification.md",
+      "lean_block": 1,
+      "code_sha256": "bc03212c18bee192e7816db9035ab096ed8e7aa0133d8db64db627bd92742b9a",
+      "method": "lake --no-build env lean -DautoImplicit=false <extracted Lean block>",
+      "exit_code": 0,
+      "seconds": 1.58,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "document": "docs/stratification.md",
+      "lean_block": 2,
+      "code_sha256": "f94312505512d9ffe6666229a79a1975463e01b62956121d6f08e910f72e855c",
+      "method": "lake --no-build env lean -DautoImplicit=false <extracted Lean block>",
+      "exit_code": 0,
+      "seconds": 1.514,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "document": "docs/stratification.md",
+      "lean_block": 3,
+      "code_sha256": "29c9237c7823c6872f221ef40bd4cea7e0fcf51de55a7e08c184886d57c4333c",
+      "method": "lake --no-build env lean -DautoImplicit=false <extracted Lean block>",
+      "exit_code": 0,
+      "seconds": 1.552,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "remote_ci": "Not certified by this local record; see the GitHub workflow runs for the published commit."
+}

@@ -1,0 +1,798 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem,longtable,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\setlength{\parskip}{0.3em}
+\setlist{nosep}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\E}{\mathcal E}
+\newcommand{\Th}{\Theta}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\dimH}{\operatorname{dim}_{\HH}}
+\newcommand{\loc}{\mathrm{loc}}
+\title{Compactness, tangent maps, and stratification of minimizing harmonic maps\\
+\large Source reconstruction and formalization obligations for
+Giaquinta--Martinazzi, printed pages 250--264}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The proof architecture is Luckhaus interpolation, annular comparison,
+strong compactness of minimizers, joint upper semicontinuity of density,
+homogeneous tangent maps, their translation-invariant spines, and a
+Hausdorff covering argument for the singular strata. Definitions and proved
+interfaces for ambient Sobolev maps, compact embedded targets, ball-local
+minimality, normalized energy, monotonicity, affine transport and smooth
+small-energy regularity are to be imported from the existing
+\texttt{harmonicMaps} package in the existing small-energy regularity project.
+This manuscript records mathematical statements and proof obligations; it
+does not assert that the new results have been checked in Lean. Literal
+source discrepancies and proposed repairs are identified explicitly.
+\end{abstract}
+\tableofcontents
+
+\section{Scope, conventions, and reusable inputs}\label{sec:scope}
+The source is Giaquinta--Martinazzi, second edition, Sections 10.3.2--10.3.3,
+printed pp.~250--264, corresponding to PDF pages 252--266 in the supplied
+file. The preceding statements of Theorems 10.15 and 10.18 and Corollary
+10.17 are required context. The beginning of Section 10.4 on p.~264,
+including Theorem 10.39, concerns weakly harmonic maps and is outside the
+minimizer stratification argument. The sharpness example in Remark 10.19
+and the nonuniqueness example in Remark 10.28 are contextual, not proof
+prerequisites.
+
+Fix an open set $\Omega\subset\R^n$, $n\ge2$, and a nonempty compact smooth
+embedded submanifold $N\subset\R^p$, without boundary, with the induced
+metric. Energy uses the Hilbert--Schmidt norm and no factor $1/2$.
+All balls are open; $\overline{B_r(a)}\subset\Omega$ is the admissibility
+condition. Maps and their displayed distributional gradients are identified
+almost everywhere. A regular point admits a smooth representative on a
+neighborhood. Statements about dilation and translation of a Sobolev map
+mean equality of almost-everywhere classes, rather than an arbitrary
+pointwise choice at its singular points.
+
+\subsection{Sobolev data, local minimality, and energy}\label{def:foundation}
+Use the existing $W^{1,2}_{\loc}$ predicate with its explicit weak gradient.
+The existing zero-boundary predicate is the closure of smooth compactly
+supported maps in the function-and-gradient $L^2$ norm. Local minimality is
+\begin{equation}\label{eq:minimality}
+ \E(u;B_r(a))\le\E(v;B_r(a)),\qquad
+ v-u\in W^{1,2}_0(B_r(a),\R^p),\quad v\in W^{1,2}(B_r(a),N),
+\end{equation}
+where $\E(u;A)=\int_A|Du|^2\dd x$. This is ball-local minimality;
+no boundary trace interface is implicit in the definition. A trace/gluing
+theorem must connect annular boundary equalities to this zero-boundary
+predicate before applying minimality.
+
+\subsection{Monotonicity and density}\label{def:density}
+Write $\Th_u(a,r)=r^{2-n}\E(u;B_r(a))$. The imported monotonicity formula is
+\begin{equation}\label{eq:monotonicity}
+ \Th_u(a,R)-\Th_u(a,r)
+ =2\int_{B_R(a)\setminus B_r(a)}
+ |x-a|^{2-n}|\partial_{\mathrm{rad},a}u|^2\dd x\ge0.
+\end{equation}
+In particular the density is the finite nonnegative limit
+\begin{equation}\label{eq:density}
+ \Th_u(a)=\lim_{r\downarrow0}\Th_u(a,r)
+          =\inf_{0<r<R_a}\Th_u(a,r),
+ \qquad \overline{B_{R_a}(a)}\subset\Omega.
+\end{equation}
+Independence of $R_a$, finiteness and the limit characterization must be
+proved before using density. The upstream energy is extended nonnegative
+real-valued; conversion to real energy requires its local finiteness theorem.
+
+\subsection{Regularity and the preliminary singular-set estimate}
+\label{lem:regular-density}
+Imported smooth small-energy regularity supplies a uniform
+$\varepsilon_*>0$, depending only on $n,N$. Smoothness implies density zero.
+The printed Theorem 10.15 itself gives H\"older regularity; the smooth
+conclusion used here is the already established imported bootstrap interface.
+Conversely density zero yields a ball of energy below $\varepsilon_*$, hence
+a smooth representative near its center. Thus
+\begin{equation}\label{eq:density-gap}
+ a\notin\Sigma(u)\iff\Th_u(a)=0,\qquad
+ a\in\Sigma(u)\Longrightarrow\Th_u(a)\ge\varepsilon_*.
+\end{equation}
+The set of regular points is open, so $\Sigma(u)$ is relatively closed.
+The uniform threshold, rather than a point-dependent threshold, is needed
+for the final three-dimensional isolation conclusion.
+
+\begin{lemma}[Source Corollary 10.17; preliminary estimate]
+\label{lem:singular-null}
+For a locally minimizing map, $\HH^{n-2}(\Sigma(u))=0$.
+\end{lemma}
+\begin{proof}[Proof obligations]
+Equation~\eqref{eq:density-gap} places $\Sigma(u)$ in the positive
+$(n-2)$-density set of the locally integrable function $|Du|^2$.
+The measure-theoretic result cited as Proposition 9.21 in the book gives
+zero $\HH^{n-2}$ measure of that set. Its covering/differentiation proof
+must be imported from Mathlib if available, or proved. Smooth small-energy
+regularity alone is not this Hausdorff-null theorem.
+\end{proof}
+
+\section{Sphere Sobolev maps and Luckhaus interpolation}
+\subsection{Source Definition 10.20}\label{def:sphere-sobolev}
+For $v\in L^2(S^{n-1},\R^p)$ define its degree-zero extension
+$\widetilde v(r\omega)=v(\omega)$ for $r>0$. The source defines
+$W^{1,2}(S^{n-1},\R^p)$ by requiring $\widetilde v\in W^{1,2}(U,\R^p)$
+on some neighborhood $U$ of $S^{n-1}$. Target-valuedness is almost
+everywhere. For a cylinder $S^{n-1}\times[a,b]$, use the radial extension
+in the sphere variable and Sobolev regularity in both variables. The closed
+interval notation includes traces of a Sobolev map on its interior.
+An equivalent chart-based construction requires an equivalence theorem.
+The sphere gradient $\nabla_S$, product gradient $\nabla$ and endpoint
+traces require actual definitions and access lemmas.
+
+\subsection{Source Lemma 10.21 and equations (10.39)--(10.41)}
+\label{lem:luckhaus}
+Put
+\[
+ A=\int_{S^{n-1}}(|\nabla_Su|^2+|\nabla_Sv|^2)\dd\HH^{n-1},\qquad
+ D=\int_{S^{n-1}}|u-v|^2\dd\HH^{n-1}.
+\]
+The source asserts a constant $C$ and an ambient-valued connector $w$ with
+traces $u,v$ and the joint estimates
+\begin{align}
+ \int_{S^{n-1}\times[0,\varepsilon]}|\nabla w|^2\dd\HH^n
+ &\le C\varepsilon A+C\varepsilon^{-1}D,\label{eq:luckhaus-energy}\\
+ \dist(w,N)^2
+ &\le C\varepsilon^{1-n}A^{1/2}D^{1/2}
+       +C\varepsilon^{-n}D\quad\text{a.e.}\label{eq:luckhaus-distance}
+\end{align}
+Both estimates must concern the same $w$ and one uniform $C$.
+The distance estimate is essential for subsequent tubular projection.
+The connector need not itself be $N$-valued.
+
+\paragraph{Source discrepancy.}
+The printed quantifier is every $\varepsilon>0$. For an arbitrary compact
+target this range is false: let $N=\{0,1\}\subset\R$ and let $u=0,v=1$.
+Then $A=0$, while almost every vertical Sobolev slice must connect $0$ to
+$1$ and crosses the middle of the gap. The right side of
+\eqref{eq:luckhaus-distance} tends to zero as $\varepsilon\to\infty$.
+The construction on p.~252 uses $0<\varepsilon<1/8$, and all downstream
+uses require small $\varepsilon$. A restricted small-cylinder statement is
+a proposed repair; no exact Lean statement is approved here. Uniformity of
+$C$ in $u,v$ and its geometric dependencies also needs an explicit statement
+audit; the printed lemma does not specify these dependencies.
+
+\subsection{The circle construction}\label{step:luckhaus-circle}
+For $n=2$, choose absolutely continuous representatives on $S^1$. The
+one-dimensional estimate is
+\begin{equation}\label{eq:circle}
+ \sup_{S^1}|u-v|^2\le C A^{1/2}D^{1/2}+CD.
+\end{equation}
+It follows by comparing a function to its average, the fundamental theorem
+of calculus and Cauchy--Schwarz. Define
+$w(\omega,s)=(1-s/\varepsilon)u(\omega)+(s/\varepsilon)v(\omega)$.
+Its tangential and vertical derivatives give
+\eqref{eq:luckhaus-energy}; its distance to the endpoint $u(\omega)\in N$
+is at most $|u(\omega)-v(\omega)|$. For $\varepsilon\le1$,
+\eqref{eq:circle} implies \eqref{eq:luckhaus-distance}.
+
+\subsection{The higher-dimensional construction and missing estimates}
+\label{step:luckhaus-skeleton}
+For $n\ge3$, the source uses radial extensions to a punctured cube,
+absolutely continuous representatives on almost every coordinate line,
+and a translated grid of cubes of side $\varepsilon$. Interpolate on the
+one-skeleton. On each $k$-face times $[0,\varepsilon]$, $k\ge2$, extend
+the already specified boundary data radially from the face-cylinder center.
+The extension takes place in dimension $k+1\ge3$, where its degree-zero
+gradient is square integrable near the center. Choose a cube boundary by
+Fubini and transfer it to the sphere by a bi-Lipschitz radial map.
+
+\paragraph{Coordinate slicing and grid selection.}\label{lem:coordinate-acl}
+Restrictions of ambient Sobolev maps to almost every coordinate line have
+absolutely continuous representatives with the corresponding weak partial
+derivative. Fubini also selects admissible translates and face restrictions.
+These coordinate-slicing facts and the quantitative grid choice must be
+proved or imported for the displayed Sobolev carrier; radial polar
+integration alone does not supply them.
+
+\paragraph{Cube-boundary/sphere transport.}\label{lem:cube-sphere}
+For the source-selected $r\in[1/8,1/4]$, on the cube boundary
+$x\mapsto x/|x|$ has inverse
+$\omega\mapsto r\omega/\|\omega\|_\infty$ for the cube $[-r,r]^n$.
+The positive lower bound on the denominators makes these maps
+bi-Lipschitz. Chartwise Sobolev pullback, surface change of variables
+and cylinder endpoint-trace compatibility transfer both gradient
+energies and pointwise distance estimates with dimension-dependent
+constants uniform in that fixed range of $r$. The geometric Lipschitz
+bounds and the actual weak
+composition/measure identities are separate obligations; neither follows
+just from the polar integration interface.
+
+\paragraph{Unproved source bridge.}\label{gap:luckhaus-estimates}
+The book explicitly omits verification of \eqref{eq:luckhaus-energy} and
+\eqref{eq:luckhaus-distance} in $n\ge3$, referring to Luckhaus [71] and
+Simon [98]. Complete formalization requires translated-grid selection,
+trace compatibility, quantitative radial-extension bounds, and transport
+of both estimates to the sphere. These are new obligations, not extra
+hypotheses of the compactness theorem. The cited complete proofs have not
+been reconstructed in this manuscript.
+
+\section{Good radii and annular gluing}
+\subsection{Source Remarks 10.22--10.23, equations (10.42)--(10.44)}
+\label{lem:good-radius}
+For nonnegative integrable $g$, radial integration gives
+\[
+ \int_{B_b(y)\setminus B_a(y)}g\dd x
+ =\int_a^b\int_{\partial B_s(y)}g\dd\HH^{n-1}\dd s.
+\]
+Chebyshev's inequality controls the exceptional radii. For $a=\rho/2$,
+$b=\rho$, the exceptional set where the surface integral exceeds
+$2(\theta\rho)^{-1}\int_{B_\rho\setminus B_{\rho/2}}g$ has length at
+most $\theta\rho/2$. Apply this to energies and $|u-v|^2$, and intersect
+their good sets. For almost every $s$, $u_s(\omega)=u(y+s\omega)$ is
+sphere-Sobolev and
+\begin{equation}\label{eq:spherical-scaling}
+ \int_{S^{n-1}}|\nabla_Su_s|^2\dd\HH^{n-1}
+ \le s^{3-n}\int_{\partial B_s(y)}|Du|^2\dd\HH^{n-1}.
+\end{equation}
+The exceptional-set constants in the source's (10.44) need separate care
+in $n=2$: the maximum of $s^{3-n}$ on this interval changes endpoint.
+The general interval estimate with a dimension-dependent constant suffices.
+
+\subsection{Annular comparison required by compactness}
+\label{lem:annular-gluing}
+Let $A_{\rho,\varepsilon}(y)=B_{(1+\varepsilon)\rho}(y)
+\setminus\overline{B_\rho(y)}$. The comparison needed downstream is:
+for each $\Lambda>0$ there are $\delta_0>0,C<\infty$, depending only
+on $n,N,\Lambda$, such that for every $y\in\R^n$, $\rho>0$,
+$u,v\in W^{1,2}(A_{\rho,\varepsilon}(y),N)$ and
+$0<\varepsilon\le\delta_0$, if
+\[
+ \rho^{2-n}\int_A(|Du|^2+|Dv|^2)\dd x\le\Lambda,\qquad
+ \varepsilon^{-2n}\rho^{-n}\int_A|u-v|^2\dd x\le\delta_0,
+\]
+there is an $N$-valued Sobolev connector $w$ with inner trace $u$,
+outer trace $v$, and
+\begin{equation}\label{eq:annular-energy}
+ \rho^{2-n}\int_A|Dw|^2\dd x
+ \le C\rho^{2-n}\int_A(|Du|^2+|Dv|^2)\dd x
+ +C\varepsilon^{-2}\rho^{-n}\int_A|u-v|^2\dd x.
+\end{equation}
+This is a proposed corrected comparison lemma, not a verbatim declaration
+of Corollary 10.24: the printed statement assigns $u$ to both boundaries.
+
+\begin{proof}[Construction and obligations; source (10.45)--(10.48)]
+Take $\delta_0\le1/8$. Choose a common good
+$s\in(\rho,(1+\varepsilon/4)\rho)$ so that
+the sphere energy is at most $C\Lambda/\varepsilon$ and the sphere
+$L^2$ discrepancy is at most
+$C\varepsilon^{-1}\rho^{-n}\int_A|u-v|^2$.
+Apply the joint Luckhaus estimates with cylinder thickness
+$\varepsilon/4$. They place the connector within the tubular neighborhood:
+its squared distance is bounded by
+$C\sqrt{\Lambda\delta_0}+C\delta_0$ under the displayed hypotheses.
+Choose $\delta_0$ small relative to the imported tubular radius. Compose
+with the imported projection $\Pi$, using its derivative bound.
+Transfer the cylinder to the middle annulus
+$s<|x-y|<(1+\varepsilon/4)s$ using cylinder coordinate $|x-y|/s-1$.
+Preserve $u$ for $\rho<|x-y|\le s$. In the next strip
+$(1+\varepsilon/4)s<|x-y|<(1+\varepsilon/2)s$, use
+$v(y+\psi(|x-y|)(x-y)/|x-y|)$ with
+$\psi(t)=2t-(1+\varepsilon/2)s$. Its endpoint values are $s$ and
+$(1+\varepsilon/2)s$, and $|\psi'|=2$.
+Since $(1+\varepsilon/2)s<(1+\varepsilon)\rho$, continue with the
+original $v$ to the outer boundary. The ratios $\psi(t)/t$ and the radial
+Jacobian are bounded above and away from zero independently of $\rho$.
+Sobolev composition and matching-trace gluing prove admissibility and
+\eqref{eq:annular-energy}.
+
+The printed (10.46) uses $\delta_0^2$ although the hypothesis uses
+$\delta_0$. A square-root smallness estimate suffices, as displayed above.
+The printed condition $t|\psi'(t)|\le2$ is not scale invariant for a
+length-valued radial map. A uniform bound on $|\psi'|$ and on $\psi(t)/t$
+is the required obligation. Neither discrepancy is an approved correction.
+\end{proof}
+
+\subsection{Traces, extension, and the imported minimizer interface}
+\label{lem:trace-gluing}
+The sphere connector and the annular competitor must have genuine endpoint
+traces. Matching traces must imply that piecewise definitions are Sobolev
+with their piecewise gradients. A map equal to $u$ in an outer collar must
+differ from $u$ by an element of the imported $W^{1,2}_0$ space on the ball.
+Conversely a competitor with zero-boundary difference on a smaller ball
+must extend by $u$ to a larger ball. These assertions require trace,
+extension and density lemmas; simply writing pointwise boundary values
+does not provide them.
+
+\section{Strong compactness of minimizing maps}
+\subsection{Source Theorem 10.25}\label{thm:compactness}
+Let $u_k\in W^{1,2}(\Omega,N)$ be minimizing harmonic maps and assume
+\begin{equation}\label{eq:equi-energy}
+ \forall\overline{B_R(a)}\subset\Omega,\qquad
+ \sup_k\E(u_k;B_R(a))<\infty.
+\end{equation}
+There is a strictly increasing subsequence index $\kappa:\N\to\N$ and
+a locally minimizing $u\in W^{1,2}_{\loc}(\Omega,N)$ such that
+$u_{\kappa(k)}\to u$ strongly in $W^{1,2}_{\loc}(\Omega,\R^p)$.
+The source writes global $W^{1,2}$ for its inputs; the local-input version
+needed for blow-ups is an extension with the same local proof, and must be
+identified as such when selecting exact declarations.
+
+\subsection{Weak extraction and one diagonal subsequence}
+\label{step:weak-extraction}
+Compactness of $N$ bounds the maps in $L^2$ on bounded balls.
+Rellich compactness and weak sequential compactness of the $L^2$ gradients
+yield strong local map convergence and weak local gradient convergence.
+Use a countable relatively compact exhaustion and nested subsequences,
+then diagonalize once. Distributional derivative identities pass to the
+limit; a further almost-everywhere subsequence and closedness of $N$ give
+$u\in N$ almost everywhere. A separate subsequence for each uncountable
+ball is not the theorem. Extension from exhaustion pieces to all compact
+subdomains is a required localization lemma.
+
+\subsection{Small-energy shell selection}\label{step:small-shell}
+Fix $\overline{B_t(y)}\subset\Omega$, $0<s<t$, and a tolerance $\eta>0$.
+Partition $B_t(y)\setminus\overline{B_s(y)}$ into sufficiently many
+disjoint concentric shells. Uniform energy bounds and weak lower
+semicontinuity bound the total energy of $u_k$ and $u$. Pigeonhole gives
+one shell $A=B_{(1+\varepsilon)r}(y)\setminus\overline{B_r(y)}$,
+$s\le r<(1+\varepsilon)r\le t$, with both energies at most $\eta$
+along an infinite subsubsequence. Choose the partition fine enough that
+$\varepsilon$ meets the annular lemma. The normalized bound $\Lambda$
+and its associated $C,\delta_0$ are fixed independently of $k$ and
+$\eta$, using $r\ge s$ and the total energy bound. For this fixed shell,
+strong $L^2$ convergence meets its discrepancy hypothesis for large $k$.
+This realizes the role of source (10.49)--(10.51) without relying on the
+printed overlapping-shell indices or the ambiguous bound
+$\varepsilon<(1-\varepsilon)/M$.
+
+\subsection{Minimality passes to the limit}\label{step:limit-minimality}
+Let $v$ be an arbitrary admissible competitor for $u$ on $B_s(y)$.
+Extend it by $u$ to $B_r(y)$ and join it to $u_k$ through the shell.
+Outside the shell use $u_k$. The trace/zero-boundary lemma makes this an
+admissible competitor for $u_k$. Minimality and annular comparison imply
+\begin{equation}\label{eq:comparison}
+ \E(u_k;B_r(y))\le\E(v;B_s(y))
+ +\E(u;B_r(y)\setminus B_s(y))+C\eta+o_k(1).
+\end{equation}
+Weak lower semicontinuity, cancellation of the unchanged annulus and
+$\eta\downarrow0$ yield $\E(u;B_s(y))\le\E(v;B_s(y))$.
+The competitor, ball and tolerance are arbitrary, so $u$ is locally
+minimizing. The shell and subsubsequence may depend on the competitor;
+the conclusion concerns the already fixed weak limit $u$.
+
+\subsection{Energy convergence and strong gradient convergence}
+\label{step:strong-convergence}
+With $v=u$, \eqref{eq:comparison} bounds energy on $B_s$ by energy of
+$u$ on $B_t$, plus $C\eta+o_k(1)$. To obtain a full limsup, apply the
+shell argument to every subsequence: a subsequence violating this bound
+would have a subsubsequence satisfying the comparison and contradict it.
+Thus
+\[
+ \limsup_k\E(u_k;B_s(y))\le\E(u;B_t(y)).
+\]
+Let $t\downarrow s$, using absolute continuity of the energy integral and
+zero volume of the boundary sphere. Combine with weak lower semicontinuity
+to get equality of energy limits. In the $L^2$ Hilbert space,
+\begin{equation}\label{eq:hilbert-strong}
+ \|Du_k-Du\|_2^2=\|Du_k\|_2^2+\|Du\|_2^2
+              -2\langle Du_k,Du\rangle\longrightarrow0.
+\end{equation}
+Together with strong map convergence this proves the stated local
+compactness. A liminf energy estimate alone, as printed in (10.54), does
+not justify this conclusion; the subsequence/limsup argument is essential.
+
+\paragraph{Assembly of Theorem 10.25.}\label{proof:compactness-assembly}
+The extraction in Section~\ref{step:weak-extraction} supplies one subsequence
+and one Sobolev limit. Section~\ref{step:limit-minimality} proves this
+limit is locally minimizing, and Section~\ref{step:strong-convergence}
+proves strong convergence of the maps and their actual weak gradients
+on every relatively compact region. These conclusions concern the same
+subsequence and limit and together prove Theorem 10.25.
+
+\section{Joint upper semicontinuity and persistence of singular points}
+\subsection{Source Proposition 10.26}\label{prop:density-usc}
+Suppose locally minimizing $u_k$ have locally equibounded energies,
+$u_k\rightharpoonup u$ locally in $L^2$, and $y_k\to y\in\Omega$.
+Then
+\begin{equation}\label{eq:usc}
+ \limsup_k\Th_{u_k}(y_k)\le\Th_u(y).
+\end{equation}
+The source writes weak $L^2$ without specifying locality; the local
+interpretation is sufficient for the displayed ball proof. Compactness
+and uniqueness of the prescribed weak limit give strong local $W^{1,2}$
+convergence of the entire sequence: every subsequence has a strongly
+convergent subsubsequence and its limit must be $u$.
+For $r,h>0$ small enough and large $k$,
+$B_r(y_k)\subset B_{r+h}(y)$, hence
+\[
+ \Th_{u_k}(y_k)\le r^{2-n}\E(u_k;B_{r+h}(y)).
+\]
+Pass to the strong energy limit, let $h\downarrow0$, then $r\downarrow0$.
+Both the moving-center inclusion and the order of these limits are used.
+
+\subsection{Singular points survive strong convergence}
+\label{lem:singular-persistence}
+If $y_k\in\Sigma(u_k)$, the uniform density gap and
+\eqref{eq:usc} give $\Th_u(y)\ge\varepsilon_*>0$, so $y\in\Sigma(u)$.
+For sets with $\Th_{u_k}(y_k)>\alpha>0$, the surviving estimate is
+$\Th_u(y)\ge\alpha$, not necessarily $>\alpha$. Positivity is enough
+for the later isolation contradiction.
+
+\section{Blow-ups and tangent maps}
+\subsection{Rescaling, source (10.56)}\label{def:blowup}
+For $y\in\Omega$, $\rho>0$, define
+$\Omega_{y,\rho}=\{x:y+\rho x\in\Omega\}$ and
+$u_{y,\rho}(x)=u(y+\rho x)$. Its actual weak gradient is
+$Du_{y,\rho}(x)=\rho Du(y+\rho x)$. The transport obligations are
+\begin{equation}\label{eq:rescaling}
+ \Th_{u_{y,\rho}}(x,r)=\Th_u(y+\rho x,\rho r),\qquad
+ \Th_{u_{y,\rho}}(x)=\Th_u(y+\rho x).
+\end{equation}
+Restriction and transport of every admissible ball competitor prove local
+minimality on $\Omega_{y,\rho}$. The upstream unit-ball transport theorem
+must be localized to arbitrary balls before it supplies this claim.
+
+\paragraph{Affine transport of regularity.}\label{lem:affine-regularity}
+For an invertible dilation or translation $F$, smooth representatives of
+$u$ pull back to smooth representatives of $u\circ F$, and conversely
+through $F^{-1}$. Null sets are preserved in both directions.
+Thus regular and singular loci transform by $F^{-1}$. For a map invariant
+almost everywhere under a dilation or translation, the same locus is
+invariant. This connects Sobolev affine identities to the singular-ray
+and singular-spine arguments, without a pointwise representative at a
+singular point.
+
+\subsection{Source Proposition 10.27; existence on expanding domains}
+\label{prop:tangent-existence}
+For every prescribed sequence $\rho_k\downarrow0$, one can extract a
+subsequence with a limit $\varphi\in W^{1,2}_{\loc}(\R^n,N)$ that is
+locally minimizing. The source explicitly states existence of one such
+sequence; the prescribed-sequence form is the bridge used by Lemma 10.36.
+On each fixed $B_R(0)$, monotonicity bounds
+\[
+ \E(u_{y,\rho_k};B_R(0))=R^{n-2}\Th_u(y,\rho_kR)
+ \le R^{n-2}\Th_u(y,r_0)
+\]
+once $\rho_kR\le r_0$. Apply local compactness on an expanding exhaustion,
+diagonalize, and identify the limits on overlaps. No values outside
+$\Omega_{y,\rho_k}$ are assigned by a fallback definition.
+Strong energy convergence gives, for every $R>0$,
+\begin{equation}\label{eq:tangent-density}
+ R^{2-n}\E(\varphi;B_R(0))=\Th_u(y)=\Th_\varphi(0).
+\end{equation}
+Monotonicity then forces the radial derivative to vanish. A Sobolev
+radial-slice lemma gives
+$\varphi(\lambda\,\cdot)=\varphi$ almost everywhere for every $\lambda>0$.
+This is degree-zero homogeneity. A tangent map is any limit obtained by
+this process; it is not a distinguished choice and is not assumed unique.
+
+\subsection{Source Remark 10.29}\label{prop:tangent-regularity}
+The following are equivalent: $u$ is regular at $y$; $\Th_u(y)=0$;
+there exists a constant tangent map at $y$. Use
+\eqref{eq:density-gap} and \eqref{eq:tangent-density}. Zero energy on
+every ball forces a tangent map to be almost everywhere constant on the
+connected domain $\R^n$. Consequently every tangent map at a singular
+point is nonconstant.
+
+\paragraph{Zero-gradient rigidity.}\label{lem:zero-gradient}
+On a ball, the imported Sobolev Poincar\'e inequality shows that zero
+gradient energy makes a map almost everywhere equal to its ball average.
+On overlapping balls these constants agree because the intersection has
+positive volume. A chain of overlapping balls in the connected domain
+$\R^n$ gives one global constant. This is a separate lemma to prove from
+the Poincar\'e interface; it is not part of the definition of a Sobolev map.
+
+\section{The spine of a homogeneous minimizer}
+\subsection{Source Proposition 10.30 and (10.58)--(10.62)}
+\label{prop:spine}
+Let $\varphi$ be a locally minimizing degree-zero homogeneous map on
+$\R^n$. Define the density-equality set
+\begin{equation}\label{def:spine}
+ S(\varphi)=\{y:\Th_\varphi(y)=\Th_\varphi(0)\}.
+\end{equation}
+Then $\Th_\varphi(y)\le\Th_\varphi(0)$ for all $y$; $S(\varphi)$ is
+a real linear subspace; and for every $y\in S(\varphi)$,
+$\varphi(\,\cdot+y)=\varphi$ almost everywhere.
+
+\begin{proof}
+Let the inner radius tend to zero in monotonicity about $y$. By monotone
+convergence of its nonnegative integral,
+\[
+ \Th_\varphi(y)+2\int_{B_R(y)}|x-y|^{2-n}
+       |\partial_{\mathrm{rad},y}\varphi|^2\dd x
+ =R^{2-n}\E(\varphi;B_R(y)).
+\]
+Homogeneity about $0$ and $B_R(y)\subset B_{R+|y|}(0)$ give
+\[
+ R^{2-n}\E(\varphi;B_R(y))
+ \le(1+|y|/R)^{n-2}\Th_\varphi(0).
+\]
+Let $R\to\infty$. This gives the density inequality. Equality of the
+densities makes the radial derivative about $y$ vanish everywhere almost
+everywhere. Thus $\varphi$ is homogeneous also about $y$:
+\[
+ \varphi(y+\lambda(x-y))=\varphi(x)\quad\text{a.e. in }x,
+ \qquad\lambda>0.
+\]
+Combining the two center homogeneities gives
+$\varphi(x)=\varphi(x+ty)$ with $t=\lambda-\lambda^{-1}$;
+these $t$ range over all real numbers. Translation invariance preserves
+local energy and therefore the density at its translated center. Sums and
+scalar multiples of invariant directions are invariant, so
+$t_1y_1+t_2y_2\in S(\varphi)$ whenever $y_1,y_2\in S(\varphi)$.
+Also $0\in S(\varphi)$. These facts construct the genuine subspace.
+\end{proof}
+The printed p.~260 formula $\varphi(y+\lambda x)=\varphi(y)$ cannot
+hold for a nonconstant tangent map. The centered homogeneity formula in
+the proof above is the required mathematical bridge, not a literal copy.
+Affine maps preserve null sets; this must be used when composing
+almost-everywhere equalities.
+
+\subsection{Source Remark 10.31}\label{lem:spine-singular}
+If $\varphi$ is nonconstant, then $0\in\Sigma(\varphi)$ by tangent
+regularity applied to the self-similar map. Translation invariance implies
+\begin{equation}\label{eq:spine-singular}
+ S(\varphi)\subset\Sigma(\varphi).
+\end{equation}
+Using an almost-everywhere class avoids inferring discontinuity of an
+arbitrarily chosen representative from nonconstancy of that representative.
+
+\section{Strata and their maximal index}
+\subsection{Source Definition 10.32}\label{def:strata}
+For integers $j\ge0$ define
+\[
+ S_j(u)=\{y\in\Sigma(u):
+       \dim S(\varphi)\le j\text{ for every tangent map at }y\}.
+\]
+The universal quantifier over tangent maps is essential; replacing it by
+existence of one suitable tangent would change the strata.
+The spine dimension is the finite real vector-space dimension. The
+Hausdorff dimension of a subset of Euclidean space is a different notion.
+
+\subsection{Source Lemma 10.33}\label{lem:strata-top}
+For $n\ge3$,
+$S_0(u)\subset\cdots\subset S_{n-3}(u)
+=S_{n-2}(u)=S_{n-1}(u)=\Sigma(u)$.
+Indeed every tangent at a singular point is nonconstant. Its spine lies in
+its singular set, whose $\HH^{n-2}$ measure is zero by
+Lemma~\ref{lem:singular-null}. A subspace of dimension at least $n-2$
+has positive $\HH^{n-2}$ measure on a bounded disk, a contradiction.
+Thus every such spine has dimension at most $n-3$.
+This is the only codimension input in the stratification argument; it
+must not be replaced by the desired $n-3$ singular dimension theorem.
+
+\section{Concentration near a tangent spine}
+\subsection{Source Lemma 10.36}\label{lem:concentration}
+For $0\le j\le n$, $y\in S_j(u)$ and $\delta>0$ there exists
+$\varepsilon=\varepsilon(u,y,\delta)>0$ such that, for every
+$0<\rho\le\varepsilon$ admissible at $y$, some $j$-dimensional linear
+subspace $L_{y,\rho}$ satisfies
+\begin{equation}\label{eq:concentration}
+ \rho^{-1}\bigl(\{x\in B_\rho(y):
+   \Th_u(x)\ge\Th_u(y)-\varepsilon\}-y\bigr)
+ \subset\{z:\dist(z,L_{y,\rho})<\delta\}.
+\end{equation}
+The same $\varepsilon$ controls the radius and density tolerance; $L$
+may depend on $\rho$. The conclusion is not uniform in $y$.
+
+\begin{proof}
+Negation supplies radii $\rho_k\downarrow0$ and tolerances
+$\varepsilon_k\downarrow0$ for which every $j$-plane fails. The
+prescribed-sequence blow-up bridge gives a tangent $\varphi$. Choose a
+$j$-plane $L_0$ containing $S(\varphi)$, possible because its dimension
+is at most $j$. Work on the compact set
+$K=\overline{B_1(0)}\cap\{z:\dist(z,L_0)\ge\delta\}$ inside a larger
+ball where convergence holds. If $K$ is empty the inclusion is immediate.
+Otherwise upper semicontinuity and the density-equality definition give
+a strict uniform gap: for some $a>0$,
+$\Th_\varphi(z)\le\Th_\varphi(0)-2a$ on $K$.
+Failure for $L_0$ yields $z_k\in K$ with
+$\Th_{u_{y,\rho_k}}(z_k)\ge\Th_u(y)-\varepsilon_k$.
+Extract $z_k\to z\in K$. Joint upper semicontinuity and
+\eqref{eq:tangent-density} force
+$\Th_\varphi(z)\ge\Th_\varphi(0)$, a contradiction.
+\end{proof}
+The source already uses $\overline{B_1(0)}$ in (10.65) and for the limit
+point $x_0$. Its strict density bound away from the spine must also hold
+on this closed ball; the global density maximum and the density-equality
+definition supply that fact. The slightly smaller tolerance $a$ avoids
+losing a strict density gap in the limit. Finite-dimensional extension of
+the spine to a $j$-plane is an independent linear-algebra obligation.
+
+\paragraph{Extension of the spine.}\label{step:spine-plane}
+For any subspace $V\subset\R^n$ with $\dim V\le j\le n$, extend a basis
+of $V$ to a basis of $\R^n$ and take the span of its first $j$ vectors,
+retaining all the basis vectors of $V$. This constructs a $j$-plane
+containing $V$. Apply this lemma to the characterized spine subspace;
+the plane is an existence witness, not a canonical choice.
+
+\section{Flat approximation and Hausdorff coverings}
+\subsection{Source Definition 10.37}\label{def:flatness}
+A set $A\subset\R^n$ has the $\delta$-approximation property at dimension
+$j$ if there exists $r_0>0$ such that, for every $a\in A$ and
+$0<r\le r_0$, some $j$-plane $L_{a,r}$ satisfies
+\[
+ A\cap B_r(a)\subset\{x:\dist(x,a+L_{a,r})<\delta r\}.
+\]
+The plane after undoing rescaling is affine and passes through $a$.
+No rectifiability or quantitative-stratification conclusion is part of
+this source property.
+
+\subsection{Source Lemma 10.38}\label{lem:flat-cover}
+For fixed $n,j$, $0\le j\le n$, there is a positive function
+$\beta(\delta)\to0$ as $\delta\downarrow0$ such that every set with
+the $\delta$-approximation property satisfies
+$\HH^{j+\beta(\delta)}(A)=0$.
+
+\begin{proof}[Covering argument with explicit recentering]
+For $0<\delta<1/8$, put $\sigma=4\delta<1/2$.
+A $j$-dimensional disk of radius $R$ has a cover by at most
+$C_j\delta^{-j}$ balls of radius $\delta R$ within its plane; $j=0$
+uses one ball.
+\label{step:disk-net}
+For $j>0$, choose a maximal $(\delta R/2)$-separated finite set in the
+closed disk. Balls of radius $\delta R/4$ about its centers are disjoint
+and lie in the disk of radius $(1+\delta/4)R$. Comparing $j$-dimensional
+volumes bounds their number by $(1+4/\delta)^j\le5^j\delta^{-j}$.
+This packing bound ensures the greedy separated-set construction
+terminates, and maximality gives the required disk cover. Thus one can
+take $C_j=5^j$. Orthogonal projection of $A\cap B_R(a)$ onto the
+approximating plane puts it in that disk. The tube is therefore covered
+by ambient balls of radius $2\delta R$ with centers in the plane.
+Discard balls not meeting $A\cap B_R(a)$. For each remaining ball
+choose a point of $A\cap B_R(a)$ in it. Recenter there and double the
+radius to $4\delta R=\sigma R$. The children now have centers in $A$,
+so the approximation property can be applied at every iteration.
+
+Write $c\ge\max(1,4^jC_j)$, so the number of children satisfies
+$Q\le c\sigma^{-j}$. Set
+\begin{equation}\label{eq:beta}
+ \beta(\delta)=\frac{\log(2c)}{\log(1/(4\delta))}>0.
+\end{equation}
+Then $Q\sigma^{j+\beta(\delta)}\le1/2$ and $\beta(\delta)\to0$.
+Cover a bounded part of $A$ initially by finitely many $A$-centered
+balls of radius $R\le r_0$. The $q$th generation has radius $\sigma^qR$
+and total $(j+\beta)$-power of the radii at most $2^{-q}T_0$.
+Diameters contribute the fixed factor $2^{j+\beta}$; the maximal
+diameter tends to zero. The definition of Hausdorff measure gives zero.
+Unbounded sets are countable unions of bounded pieces. For
+$\delta\ge1/8$, use $\beta(\delta)=n-j+1$, since $\HH^{n+1}(A)=0$.
+\end{proof}
+The source iteration does not explicitly justify recentering its new
+balls at points of $A$. The argument above records the required bridge;
+the chosen formula for $\beta$ is a sufficient construction, not an
+author-fixed normalization of that existential witness.
+
+\section{Dimension of the strata and isolated singularities}
+\subsection{Source Proposition 10.34: literal statement and stronger goal}
+\label{prop:stratum-dimension}
+The printed statement on p.~261 gives $\dimH S_j(u)\le n-3$ for
+$0\le j\le n-3$, whereas the proof on pp.~262--263 establishes the
+stratified estimate
+\begin{equation}\label{eq:stratum-dimension}
+ \dimH S_j(u)\le j.
+\end{equation}
+The latter is the natural proposed formalization goal and implies the
+literal statement. Selecting it as a source-facing frozen declaration
+requires an explicit ruling; the discrepancy is not silently resolved.
+Equivalently, for every $s>j$, prove $\HH^s(S_j(u))=0$.
+
+\begin{proof}[Derivation recorded in the source proof]
+Fix $\delta>0$. Let $S^{\delta}_{j,i}$ consist of points in $S_j(u)$
+for which \eqref{eq:concentration} holds with
+$\varepsilon=1/i$, with $B_{1/i}(y)$ admissible. Shrinking a valid
+$\varepsilon$ preserves the inclusion, so
+$S_j(u)=\bigcup_{i\ge1}S^{\delta}_{j,i}$.
+For $q\ge1$ set
+\[
+ A^{\delta}_{i,q}=S^{\delta}_{j,i}\cap
+  \{y:(q-1)/i<\Th_u(y)\le q/i\}.
+\]
+Positive density on the singular set makes these bins exhaustive.
+For $x,y$ in the same bin,
+$\Th_u(x)>\Th_u(y)-1/i$. Consequently each
+$A^{\delta}_{i,q}$ has the $\delta$-approximation property with
+$r_0=1/i$. The covering lemma and countable subadditivity give
+$\HH^{j+\beta(\delta)}(S_j(u))=0$ for this fixed $\delta$.
+For an arbitrary $s>j$, choose a sufficiently small $\delta$ with
+$j+\beta(\delta)<s$, and use monotonicity of Hausdorff exponents.
+This proves \eqref{eq:stratum-dimension}.
+\end{proof}
+For $j\le n-3$ this also proves the literal dimension assertion of
+Proposition 10.34. Its other assertion is proved by the isolation
+argument below.
+The auxiliary sets depend on $\delta$; one cannot keep an individual
+$A^{\delta}_{i,q}$ fixed and then assert it has every approximation
+parameter. The order is: fix $\delta$, take a countable union, then let
+$\delta$ tend to zero at the level of $S_j(u)$.
+
+\subsection{The density superlevel isolation conclusion}
+\label{prop:isolation}
+For $n=3$ and $\alpha>0$, the set
+$S_0(u)\cap\{y:\Th_u(y)>\alpha\}$ has no accumulation point in
+$\Omega$, hence is discrete. Suppose distinct $x_k$ in this set tend
+to $x_0\in\Omega$. Rescale by $r_k=|x_k-x_0|$ and extract a tangent
+$\varphi$ at $x_0$ with
+$(x_k-x_0)/r_k\to\xi\in S^2$. Upper semicontinuity gives
+$\Th_\varphi(\xi)\ge\alpha>0$, so $\xi$ is singular.
+Homogeneity transports singularity to the ray
+$\{t\xi:t>0\}$. Its bounded nontrivial segment has positive
+$\HH^1$ measure, contradicting
+$\HH^1(\Sigma(\varphi))=0$ from Corollary 10.17.
+Relative closedness of $\Sigma(u)$ and admissibility of $x_0$ must be
+retained; boundary accumulation is not excluded.
+
+\subsection{Source Corollary 10.35 and Theorem 10.18}
+\label{cor:singular-dimension}
+For $n\ge3$ a locally minimizing harmonic map satisfies
+$\dimH\Sigma(u)\le n-3$. For $n=3$ its singular set has no
+accumulation in $\Omega$. Combine $S_{n-3}(u)=\Sigma(u)$ with the
+literal dimension assertion of Proposition 10.34. For isolation choose
+$0<\alpha<\varepsilon_*$,
+so every singular point belongs to the strict density superlevel set.
+The book's choice $\alpha=\varepsilon_0$ needs a strict-gap justification;
+choosing half the imported threshold avoids that issue.
+
+\paragraph{The earlier proof of Theorem 10.18 on p.~258.}
+Its three-dimensional contradiction uses the same compactness, density
+semicontinuity, homogeneous blow-up and singular ray. Equation (10.55)
+is exactly the constant tangent energy identity
+\eqref{eq:tangent-density}. The higher-dimensional sentence refers back
+to the dimension-reduction proof of Theorem 10.11; that earlier route is
+not needed when Corollary 10.35 is assembled from the strata. It remains
+an explicit external proof route, not an omitted premise of this route.
+
+\section{Formalization boundaries and proposed declaration surfaces}
+\label{sec:formalization}
+The new proof obligations divide into four mathematical components:
+\begin{enumerate}
+ \item Sphere/cylinder Sobolev data, traces, Luckhaus estimates and
+ annular comparison; followed by local extraction and strong compactness.
+ \item Density, regular/singular definitions, preliminary Hausdorff nullity
+ and joint upper semicontinuity; no $n-3$ estimate is assumed.
+ \item Expanding-domain rescaling, tangent maps, homogeneity, spines and
+ their dimensions. Tangent maps are a relation, not a chosen unique map.
+ \item Density concentration, finite-dimensional flat covers, stratified
+ Hausdorff estimates and the isolation corollary.
+\end{enumerate}
+Recommended small declaration surfaces are strong local compactness,
+joint density semicontinuity, the joint tangent existence/energy/homogeneity
+theorem, the joint spine/subspace/invariance theorem, and the final joint
+stratification statement. The choice of exact carriers and quantifiers,
+and every source repair above, must be resolved before elaborating and
+approving full Lean declarations. Shared constants and witnesses in
+Luckhaus and gluing must stay joint. Helper conclusions may not be added
+as hypotheses of these public theorems.
+
+\begin{thebibliography}{99}\small
+\bibitem{GM} M. Giaquinta and L. Martinazzi,
+\emph{An Introduction to the Regularity Theory for Elliptic Systems,
+Harmonic Maps and Minimal Graphs}, second edition,
+Sections 10.3.2--10.3.3, printed pp.~250--264.
+\bibitem{Luckhaus} S. Luckhaus,
+Partial H\"older continuity for minima of certain energies among maps
+into a Riemannian manifold, \emph{Indiana Univ. Math. J.} 37 (1988),
+349--367. Source reference [71]; quantitative proof not reconstructed here.
+\bibitem{SimonMaps} L. Simon,
+\emph{Theorems on Regularity and Singularity of Energy Minimizing Maps},
+Birkh\"auser, 1996. Source reference [98].
+\bibitem{SimonSing} L. Simon,
+Singularities of geometric variational problems, in
+\emph{Nonlinear Partial Differential Equations in Differential Geometry},
+R. Hardt and M. Wolf (eds.), AMS, 1996. Source reference [99].
+\bibitem{SU} R. Schoen and K. Uhlenbeck,
+A regularity theory for harmonic maps, \emph{J. Differential Geom.}
+17 (1982), 307--335. Source reference [95].
+\end{thebibliography}
+\end{document}
